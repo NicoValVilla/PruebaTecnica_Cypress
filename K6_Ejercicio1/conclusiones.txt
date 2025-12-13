@@ -1,0 +1,66 @@
+---------------
+CONCLUSIONES
+---------------
+La prueba de carga fue ejecutada sobre el endpoint de autenticación
+https://fakestoreapi.com/auth/login utilizando un escenario de
+carga constante de 20 iteraciones por segundo durante 30 segundos,
+con un máximo de hasta 50 usuarios virtuales concurrentes.
+
+---------------
+ANÁLISIS DE RENDIMIENTO
+---------------
+- El percentil 95 (p95) del tiempo de respuesta fue de 402.74 ms,
+  valor que se encuentra ampliamente por debajo del umbral máximo
+  definido de 1.5 segundos.
+
+- El tiempo de respuesta promedio fue de 344.55 ms, con una mediana
+  de 325.08 ms, lo que evidencia una latencia estable y consistente
+  durante toda la ejecución de la prueba.
+
+- No se presentaron errores HTTP técnicos (http_req_failed = 0%),
+  lo que indica que el servicio no experimentó fallos de red,
+  timeouts ni errores 5xx bajo la carga aplicada.
+
+---------------
+ANÁLISIS DE CARGA Y CONCURRENCIA
+---------------
+- Se ejecutaron un total de 582 iteraciones, alcanzando un throughput
+  promedio de 18.55 solicitudes por segundo, valor cercano al objetivo
+  de 20 TPS establecido en el escenario.
+
+- El motor de k6 escaló dinámicamente los usuarios virtuales hasta un
+  máximo de 29 VUs para sostener la tasa de llegada configurada,
+  demostrando una correcta parametrización del escenario
+  constant-arrival-rate.
+
+- Se registraron 19 iteraciones descartadas (dropped_iterations),
+  lo cual es aceptable dentro del contexto de pruebas de carga
+  controladas.
+
+---------------
+ANÁLISIS FUNCIONAL
+---------------
+- El 100% de las solicitudes fueron contabilizadas como errores
+  funcionales, debido a que el endpoint de FakeStore API rechaza 
+  las credenciales utilizadas en el archivo de datos.
+
+- Las respuestas HTTP 401 obtenidas corresponden al comportamiento
+  esperado del servicio cuando se envían credenciales inválidas,
+  por lo cual estos resultados no se interpretan como fallos tecnicos
+  del sistema.
+
+- La separación explícita entre errores funcionales y errores
+  técnicos permitió evaluar el desempeño del servicio sin que
+  las validaciones funcionales afectaran el análisis de performance.
+
+---------------
+CONCLUSIÓN GENERAL
+---------------
+El servicio evaluado cumple con los criterios de aceptación
+definidos para la prueba de carga, demostrando estabilidad y tiempos de
+respuesta adecuados bajo el nivel de concurrencia aplicado..
+
+Los errores observados son de naturaleza funcional y coherentes
+con los datos de entrada utilizados, por lo que no impactan
+negativamente la evaluación de rendimiento del sistema.
+
