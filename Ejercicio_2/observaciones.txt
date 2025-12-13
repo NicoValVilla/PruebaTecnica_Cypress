@@ -1,0 +1,28 @@
+CONCLUSIONES Y HALLAZGOS
+=======================
+
+1. La automatización desarrollada valida correctamente los endpoints de signup y login
+   de la aplicación DemoBlaze, cumpliendo con los escenarios solicitados:
+   - Crear un usuario nuevo
+   - Intentar crear un usuario ya existente
+   - Login con usuario y password correctos
+   - Login con usuario o password incorrectos
+
+2. Durante el desarrollo de la prueba se identificaron comportamientos del API que 
+   pueden afectar la automatización y la interpretación de resultados, como:
+   - El endpoint de signup retorna siempre HTTP 200, incluso cuando el usuario ya existe.
+   - El endpoint de login retorna tipos de respuesta distintos según el resultado:
+       - Login exitoso: token en texto plano (string)
+       - Login fallido: objeto JSON con propiedad errorMessage
+   - Mensajes de error no estandarizados en algunos escenarios.
+
+3. Para mitigar estos puntos y garantizar robustez, se aplicaron las siguientes estrategias:
+   - Validaciones basadas en el contenido de la respuesta, no solo en status code.
+   - Manejo condicional de tipos de respuesta según el escenario.
+   - Uso de fixtures para desacoplar los datos de prueba y generar usuarios dinámicos.
+   - Comandos personalizados para reducir duplicación de código y mejorar mantenibilidad.
+
+4. Se aplicaron buenas prácticas de automatización:
+   - Separación de responsabilidades mediante fixtures y comandos personalizados.
+   - Validaciones claras y flexibles, evitando hardcode de mensajes exactos.
+   - Tests independientes y repetibles, sin depender del estado de ejecuciones anteriores.

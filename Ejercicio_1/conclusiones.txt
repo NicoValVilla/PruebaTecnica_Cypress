@@ -1,0 +1,18 @@
+CONCLUSIONES Y HALLAZGOS
+=======================
+
+1. La automatización desarrollada valida correctamente el flujo E2E de compra
+   en la aplicación, cumpliendo con los pasos solicitados: agregar productos, 
+   visualizar el carrito y finalizar la compra.
+
+2. Durante el desarrollo de la prueba se identificaron algunos comportamientos
+   propios de la aplicación que pueden afectar la automatización, como:
+   - Uso de alerts nativos del navegador.
+   - Falta de identificadores únicos en algunos elementos.
+
+3. Para mitigar estos puntos, se seleccionaron correctamente los selectores
+   y se aplicaron validaciones de visibilidad, logrando una prueba estable.
+
+4. Se aplicaron buenas prácticas básicas de automatización, como:
+   - Separación de responsabilidades mediante Page Object Model.
+   - Uso de datos externos (fixtures) para el formulario de compra.
