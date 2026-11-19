@@ -1,0 +1,8 @@
+# Dependencias: se instalan con npm install, no se versionan (hallazgo 6)
+node_modules/
+**/node_modules/
+
+# Artefactos de ejecución de Cypress
+**/cypress/videos/
+**/cypress/screenshots/
+**/cypress/downloads/
