@@ -2,6 +2,8 @@ import HomePage from '../pages/home.page'
 import CartPage from '../pages/cart.page'
 import PurchaseModal from '../pages/purchase.modal.page'
 
+// Prueba de sistema, extremo a extremo: camino feliz del flujo de compra.
+// Trazabilidad: ver TRAZABILIDAD.md, caso E2E-01.
 describe('Flujo de compra - Demoblaze', () => {
 
   const homePage = new HomePage()
@@ -12,20 +14,18 @@ describe('Flujo de compra - Demoblaze', () => {
     cy.fixture('compraData').as('data')
   })
 
-  it('Debe completar una compra exitosamente', function () {
+  it('E2E-01 Debe completar una compra exitosamente', function () {
 
     homePage.visit()
 
-    // Producto 1
+    // Producto 1 (v2: addToCart ahora verifica la alerta)
     homePage.selectProduct('Samsung galaxy s6')
     homePage.addToCart()
-    homePage.acceptAlert()
     homePage.goToHome()
 
     // Producto 2
     homePage.selectProduct('Nokia lumia 1520')
     homePage.addToCart()
-    homePage.acceptAlert()
 
     // Carrito
     cartPage.goToCart()

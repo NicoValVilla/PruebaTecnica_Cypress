@@ -8,7 +8,7 @@ describe("API Signup", () => {
 
       cy.request({
         method: "POST",
-        url: "https://api.demoblaze.com/signup",
+        url: `${Cypress.env("apiUrl")}/signup`,
         body: user,
       }).then((response) => {
         expect(response.status).to.eq(200);
@@ -26,13 +26,13 @@ describe("API Signup", () => {
 
       cy.request({
         method: "POST",
-        url: "https://api.demoblaze.com/signup",
+        url: `${Cypress.env("apiUrl")}/signup`,
         body: user,
       });
 
       cy.request({
         method: "POST",
-        url: "https://api.demoblaze.com/signup",
+        url: `${Cypress.env("apiUrl")}/signup`,
         body: user,
         failOnStatusCode: false,
       }).then((response) => {

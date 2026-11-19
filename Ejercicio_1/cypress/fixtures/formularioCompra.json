@@ -1,0 +1,10 @@
+{
+  "_tecnica": "Tabla de decisión (syllabus CTFL v4.0.1, §4.2.3) con condiciones derivadas de partición de equivalencia (§4.2.1). C1: nombre diligenciado. C2: tarjeta diligenciada. Condición fija: carrito con un producto.",
+  "reglas": [
+    { "id": "TD-R1", "c1_nombre": true,  "c2_tarjeta": true,  "esperado": "compra",   "datos": { "name": "Nicolas Valdivia", "card": "4111111111111111" } },
+    { "id": "TD-R2", "c1_nombre": true,  "c2_tarjeta": false, "esperado": "rechazo",  "datos": { "name": "Nicolas Valdivia", "card": "" } },
+    { "id": "TD-R3", "c1_nombre": false, "c2_tarjeta": true,  "esperado": "rechazo",  "datos": { "name": "", "card": "4111111111111111" } },
+    { "id": "TD-R4", "c1_nombre": false, "c2_tarjeta": false, "esperado": "rechazo",  "datos": { "name": "", "card": "" } }
+  ],
+  "mensajeRechazo": "Please fill out Name and Creditcard"
+}
